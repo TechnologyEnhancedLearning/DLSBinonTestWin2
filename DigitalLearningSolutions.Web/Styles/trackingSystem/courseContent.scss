@@ -1,0 +1,18 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+@use "../shared/searchableElements/common" as *;
+
+.summary-list-right-align-tags {
+  @include mq($from: tablet) {
+    text-align: right;
+  }
+}
+
+.deselect-all-button {
+  @extend .select-all-button;
+}
+
+.tutorial-learning-column {
+  @include mq($until: desktop) {
+    margin-top: nhsuk-spacing(5);
+  }
+}

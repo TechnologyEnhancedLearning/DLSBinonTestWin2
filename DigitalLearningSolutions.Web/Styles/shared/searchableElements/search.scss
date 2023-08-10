@@ -1,0 +1,40 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+@use "common" as *;
+
+.search-box-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.search-box {
+  @extend .pagination-input-with-no-js-submit-button;
+  -webkit-appearance: none;
+  flex: 1;
+  padding: 0 13px;
+}
+
+.search-submit {
+  @extend .inline-button;
+  line-height: 0;
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+
+  .nhsuk-icon__search {
+    height: 27px;
+    width: 27px;
+    fill: $color_nhsuk-white;
+  }
+
+  &:focus:not(:active) .nhsuk-icon__search {
+    fill: $nhsuk-focus-text-color;
+  }
+
+  #js-styling-hidden-area-while-loading & {
+    .js-enabled & {
+      display: none;
+    }
+  }
+}

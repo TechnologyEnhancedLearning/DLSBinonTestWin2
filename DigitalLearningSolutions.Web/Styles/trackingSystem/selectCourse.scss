@@ -1,0 +1,18 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+@use "../shared/searchableElements/filter" as *;
+
+.filter-dropdown {
+  @extend .pagination-input-with-no-js-submit-button;
+  @extend .pagination-input-with-no-js-submit-button-border;
+}
+
+.course-dropdown {
+  border-radius: 4px;
+  padding: 0 9px;
+  font-size: 16px;
+  height: 52px;
+
+  @include mq($from: tablet) {
+    height: 40px;
+  }
+}

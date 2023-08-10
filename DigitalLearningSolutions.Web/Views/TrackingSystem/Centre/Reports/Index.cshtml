@@ -1,0 +1,83 @@
+@using DigitalLearningSolutions.Web.Models.Enums
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Centre.Reports
+@using Microsoft.AspNetCore.Html;
+
+@model ReportsViewModel
+
+@{
+  ViewData["Title"] = "Course reports";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/reports.css")" asp-append-version="true">
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-quarter">
+    <nav class="side-nav-menu" aria-label="Side navigation bar">
+      <partial name="~/Views/TrackingSystem/Centre/Shared/_CentreSideNavMenu.cshtml" model="CentrePage.Reports" />
+    </nav>
+  </div>
+
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 id="page-heading" class="nhsuk-heading-xl">@ViewData["Title"]</h1>
+
+    @if (Model.HasActivity)
+    {
+      <span class="nhsuk-body-l">View reports for <span class="nhsuk-u-font-weight-bold">@Model.ReportsFilterModel.CourseCategoryName</span> courses.</span>
+
+      <partial name="_FilterDisplayCard.cshtml" model="@Model.ReportsFilterModel" />
+
+      <h2 class="nhsuk-heading-m">Usage stats</h2>
+
+      <div id="activity-graph" class="js-only-block">
+        <partial name="_ActivityGraph.cshtml" />
+      </div>
+      <div id="activity-graph-data-error" class="js-only-block" hidden>
+        <vc:inset-text text="Too many chart data points to display. Please select a smaller date range or a bigger reporting interval to view data on a chart."
+                     css-class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4" />
+      </div>
+      <partial name="_ActivityTable.cshtml" model="@Model.UsageStatsTableViewModel" />
+
+      <a class="nhsuk-button nhsuk-u-margin-top-6"
+       asp-controller="Reports"
+       asp-action="DownloadUsageData"
+       asp-all-route-data="@Model.ReportsFilterModel.FilterValues"
+       role="button">
+        Download usage data
+      </a>
+
+      <hr />
+      <h2 class="nhsuk-heading-m">Evaluation summary</h2>
+      <p>Summary of evaluation responses collected from delegates on completion of learning activities.</p>
+
+      <ul class="nhsuk-card-group">
+        @foreach (var evaluationSummary in Model.EvaluationSummaryBreakdown)
+        {
+          <li class="nhsuk-card-group__item">
+            <partial name="_EvaluationSummaryCard.cshtml" model="evaluationSummary" />
+          </li>
+        }
+      </ul>
+
+      <a class="nhsuk-button"
+       asp-controller="Reports"
+       asp-action="DownloadEvaluationSummaries"
+       asp-all-route-data="@Model.ReportsFilterModel.FilterValues"
+       role="button">
+        Download evaluation summary
+      </a>
+    }
+    else
+    {
+       var place = Model.Category == "All" ? "yet." : $"in the <b>{Model.Category}</b> category, yet.";
+            <p class="nhsuk-body-l" id="no-activity-message">
+                This centre has no courses set up @Html.Raw(place)
+                </p>
+    }
+
+    <nav class="side-nav-menu-bottom" aria-label="Bottom navigation bar">
+      <partial name="~/Views/TrackingSystem/Centre/Shared/_CentreSideNavMenu.cshtml" model="CentrePage.Reports" />
+    </nav>
+  </div>
+</div>
+
+<script src="@Url.Content("~/js/trackingSystem/reports.js")" asp-append-version="true"></script>

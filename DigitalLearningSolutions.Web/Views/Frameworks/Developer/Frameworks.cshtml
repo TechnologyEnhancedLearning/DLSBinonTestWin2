@@ -1,0 +1,38 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.Frameworks;
+@model FrameworksViewModel;
+@{
+  ViewData["Title"] = (string)ViewContext.RouteData.Values["tabname"] == "Mine" ? "My Frameworks" : "All Frameworks";
+  ViewData["Application"] = "Framework Service";
+  ViewData["HeaderPathName"] = "Framework Service";
+}
+<link rel="stylesheet" href="@Url.Content("~/css/frameworks/frameworksShared.css")" asp-append-version="true">
+@section NavMenuItems {
+  <partial name="Shared/_NavMenuItems" />
+}
+  @section NavBreadcrumbs {
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item">Frameworks</li>
+      </ol>
+    </div>
+  </nav>
+}
+
+  @if (Model.IsFrameworkContributor | Model.IsFrameworkDeveloper)
+{
+  <partial name="_SecondaryTabsNavMenu" model="Model.TabsNavLinks" />
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    @if ((string)ViewContext.RouteData.Values["tabname"] == "Mine")
+    {
+      <partial name="_MyFrameworks.cshtml" model="Model.MyFrameworksViewModel" />
+    }
+    else if ((string)ViewContext.RouteData.Values["tabname"] == "All")
+    {
+      <partial name="_AllFrameworks.cshtml" model="Model.AllFrameworksViewModel" />
+    }
+  </div>
+</div>

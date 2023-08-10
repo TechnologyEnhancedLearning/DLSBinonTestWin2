@@ -1,0 +1,28 @@
+﻿@use 'nhsuk-frontend/packages/core/all' as *;
+@use '../../shared/searchableElements/searchableElements' as *;
+@use '../../shared/headingButtons' as *;
+@use '../../shared/cardWithThreeButtons' as *;
+@use '../../shared/searchableElements/common' as *;
+
+.course-dropdown-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.course-dropdown {
+  @extend .input-with-submit-button;
+  width: 100%;
+}
+
+.course-submit {
+  @extend .inline-button;
+
+  &__dropdown {
+    @extend .inline-button;
+
+    @include mq($from: tablet) {
+      width: 20%;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+@use '../../shared/searchableElements/common' as *;
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  @include mq($until: desktop) {
+    flex-direction: column;
+  }
+}
+
+.filter-dropdown-selector {
+  @extend .left-dropdown;
+  display: none;
+
+  #js-styling-hidden-area-while-loading & {
+    .js-enabled & {
+      display: flex;
+      width: 100%;
+
+      @include mq($from: desktop) {
+        width: 40%;
+      }
+    }
+  }
+}
+
+.filters-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.filter-dropdown-container {
+  width: 100%;
+  display: flex;
+
+  #js-styling-hidden-area-while-loading & {
+    .js-enabled & {
+      display: none;
+    }
+  }
+}
+
+.filter-form {
+  width: 100%;
+}
+
+.filter-value-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.filter-dropdown {
+  @extend .input-with-submit-button;
+  width: 100%;
+}
+
+.filter-submit {
+  @extend .inline-button;
+
+  &__dropdown {
+    @extend .inline-button;
+
+    @include mq($from: tablet) {
+      width: 20%;
+    }
+
+    @include mq($from: desktop) {
+      #js-styling-hidden-area-while-loading & {
+        .js-enabled & {
+          width: 33.3333%;
+        }
+      }
+    }
+  }
+}
+
+.applied-filters-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  @include mq($until: tablet) {
+    flex-direction: column;
+  }
+}
+
+.applied-filter-container {
+  flex: 1;
+  margin-right: 5px;
+
+  @include mq($until: tablet) {
+    width: 100%;
+  }
+}
+
+.filter-submit__clear {
+  @extend .inline-button;
+  width: 20%;
+  border-radius: 4px;
+  background-color: $color_nhsuk-red;
+
+  @include mq($until: tablet) {
+    margin-top: nhsuk-spacing(2);
+  }
+}
+
+.filter-tag {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  margin-bottom: 4px;
+}

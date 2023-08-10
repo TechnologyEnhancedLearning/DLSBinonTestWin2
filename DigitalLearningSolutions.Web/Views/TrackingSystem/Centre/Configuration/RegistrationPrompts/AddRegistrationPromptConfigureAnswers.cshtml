@@ -1,0 +1,60 @@
+﻿@using DigitalLearningSolutions.Web.Controllers.TrackingSystem.Centre.Configuration
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Centre.Configuration.RegistrationPrompts
+@model RegistrationPromptAnswersViewModel
+
+@{
+  var errorHasOccurred = !ViewData.ModelState.IsValid;
+  ViewData["Title"] = errorHasOccurred ? "Error: Add delegate registration prompt" : "Add delegate registration prompt";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    @if (errorHasOccurred) {
+      <vc:error-summary order-of-property-names="@(new []{ nameof(EditRegistrationPromptViewModel.OptionsString), nameof(EditRegistrationPromptViewModel.Answer)})" />
+    }
+
+    <h1 class="nhsuk-heading-xl">Configure responses</h1>
+    <vc:field-name-value-display display-name="Prompt" field-value="@Model.PromptName" />
+
+    <form class="nhsuk-u-margin-bottom-3" method="post" novalidate asp-action="AddRegistrationPromptConfigureAnswers">
+      <div class="hidden-submit">
+        <button name="action" class="nhsuk-button" value="@RegistrationPromptsController.AddPromptAction" aria-hidden="true" tabindex="-1">Add</button>
+      </div>
+
+      <input type="hidden" asp-for="OptionsString" />
+      <input type="hidden" asp-for="PromptName" />
+
+      @if (string.IsNullOrEmpty(Model.OptionsString))
+      {
+        <partial name="_NoConfiguredAnswers" />
+      }
+      else
+      {
+        <partial name="_RegistrationPromptAnswerTable" model="Model" />
+      }
+
+      <div class="divider">
+        <vc:text-input asp-for="Answer"
+                       label="Add a new response?"
+                       populate-with-current-value="true"
+                       type="text"
+                       spell-check="true"
+                       autocomplete=""
+                       hint-text=""
+                       css-class="nhsuk-u-width-one-half"
+                       required="false" />
+        <button name="action" class="nhsuk-button nhsuk-button--secondary" value="@RegistrationPromptsController.AddPromptAction">Add</button>
+      </div>
+
+      <div class="divider">
+        <p class="nhsuk-label">Want to edit responses in bulk?</p>
+        <button name="action" class="nhsuk-button nhsuk-button--secondary" value="@RegistrationPromptsController.BulkAction">Bulk edit</button>
+      </div>
+
+      <a class="nhsuk-button nhsuk-button--secondary" asp-controller="RegistrationPrompts" asp-action="AddRegistrationPromptSelectPrompt" role="button">Back</a>
+      <button name="action" class="nhsuk-button" value="@RegistrationPromptsController.NextAction">Next</button>
+    </form>
+
+    <vc:cancel-link asp-controller="RegistrationPrompts" asp-action="Index" />
+  </div>
+</div>

@@ -1,0 +1,126 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Delegates.DelegateProgress
+@model DelegateProgressViewModel
+
+<dl class="nhsuk-summary-list">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Supervisor
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.Supervisor
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Enrolled
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.Enrolled
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Complete by
+    </dt>
+    <partial name="_SummaryFieldValue" model="Model.CompleteBy" />
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Last access
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.LastAccessed
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Completed
+    </dt>
+    <partial name="_SummaryFieldValue" model="Model.Completed" />
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Evaluated
+    </dt>
+    <partial name="_SummaryFieldValue" model="Model.Evaluated" />
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Removed
+    </dt>
+    <partial name="_SummaryFieldValue" model="Model.RemovedDate" />
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Enrolment method
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.EnrolmentMethod
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Logins
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.LoginCount
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Learning time
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      @Model.LearningTime
+    </dd>
+  </div>
+
+  @if (Model.IsAssessed)
+  {
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Assessments passed
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        @Model.AttemptsPassed
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Assessment attempts
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        @Model.TotalAttempts
+      </dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Pass rate
+      </dt>
+      <partial name="_SummaryFieldValue" model="Model.PassRateDisplayString" />
+    </div>
+  }
+
+  @foreach (var delegateCourseAdminField in Model.AdminFields)
+  {
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        @delegateCourseAdminField.Prompt
+      </dt>
+      <partial name="_SummaryFieldValue" model="delegateCourseAdminField.Answer" />
+    </div>
+  }
+
+</dl>

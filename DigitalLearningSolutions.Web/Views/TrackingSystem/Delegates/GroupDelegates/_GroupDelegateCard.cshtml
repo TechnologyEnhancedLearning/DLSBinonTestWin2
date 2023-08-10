@@ -1,0 +1,56 @@
+﻿@using DigitalLearningSolutions.Web.Helpers
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Delegates.GroupDelegates
+@model GroupDelegateViewModel
+
+<div class="nhsuk-panel word-break" id="@Model.GroupDelegateId-card">
+  <details class="nhsuk-details nhsuk-expander">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text" id="@Model.GroupDelegateId-name" name="name">
+        @Model.TitleName
+        @DisplayStringHelper.GetEmailDisplayString(Model.EmailAddress)
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <dl class="nhsuk-summary-list details-list-with-button">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            @Model.Name
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email
+          </dt>
+          <partial name="_SummaryFieldValue" model="Model.EmailAddress" />
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            @Model.CandidateNumber
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Professional Registration Number
+          </dt>
+          <partial name="_SummaryFieldValue" model="@Model.ProfessionalRegistrationNumber" />
+        </div>
+      </dl>
+
+      <a class="nhsuk-button delete-button nhsuk-u-margin-bottom-1"
+         role="button"
+         asp-controller="GroupDelegates"
+         asp-action="RemoveGroupDelegate"
+         asp-route-groupId="@Model.GroupId"
+         asp-route-delegateId="@Model.DelegateId"
+         asp-route-returnPageQuery="@Model.ReturnPageQuery">
+        Remove from group
+      </a>
+    </div>
+  </details>
+</div>

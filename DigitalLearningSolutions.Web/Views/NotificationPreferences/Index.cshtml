@@ -1,0 +1,46 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.MyAccount
+@model NotificationPreferencesViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/myAccount/notificationPreferences.css")" asp-append-version="true">
+
+@{
+  ViewData["Title"] = "Notification preferences";
+  var routeParamsForIndexLink = new Dictionary<string, string?> {
+    { "dlsSubApplication", Model.DlsSubApplication.UrlSegment },
+  };
+}
+
+@section NavBreadcrumbs {
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item">
+          <a class="nhsuk-breadcrumb__link" asp-controller="MyAccount" asp-action="Index" asp-route-dlsSubApplication="@Model.DlsSubApplication.UrlSegment">My account</a>
+        </li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back">
+        <a class="nhsuk-breadcrumb__backlink" asp-controller="MyAccount" asp-action="Index" asp-route-dlsSubApplication="@Model.DlsSubApplication.UrlSegment">Back to my account</a>
+      </p>
+    </div>
+  </nav>
+}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">Notification preferences</h1>
+
+      <div class="nhsuk-u-margin-bottom-7">
+        @if (Model.AdminNotifications.Notifications.Any())
+      {
+        <partial name="_UserNotificationPreferences" model="Model.AdminNotifications" />
+      }
+
+      @if (Model.DelegateNotifications.Notifications.Any())
+      {
+        <partial name="_UserNotificationPreferences" model="Model.DelegateNotifications" />
+      }
+    </div>
+
+    <vc:back-link asp-controller="MyAccount" asp-action="Index" link-text="Go back" asp-all-route-data="@routeParamsForIndexLink" />
+  </div>
+</div>

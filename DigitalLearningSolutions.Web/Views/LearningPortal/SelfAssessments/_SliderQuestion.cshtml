@@ -1,0 +1,42 @@
+﻿@using DigitalLearningSolutions.Data.Models.SelfAssessments
+@model AssessmentQuestion
+
+<label for="@Model.Id-input">
+  <h3 class="nhsuk-u-margin-bottom-1">
+    @Model.Question @if (!Model.Required)
+    {
+      <span>(optional)</span>
+    }
+  </h3>
+</label>
+@if (Model.ScoringInstructions != null)
+{
+  <div class="nhsuk-hint">
+    @(Html.Raw(Model.ScoringInstructions))
+  </div>
+}
+
+<div class="nhsuk-grid-row">
+  <div class="grid-column-85">
+    <span class="left-label">@Model.MinValueDescription</span>
+    <span class="right-label">@Model.MaxValueDescription</span>
+  </div>
+</div>
+<div class="nhsuk-grid-row range-input-row nhsuk-u-margin-bottom-5">
+  <div class="grid-column-85">
+    <input type="range"
+           id="@Model.Id-input"
+           name="[@ViewData["index"]].Result"
+           min="@Model.MinValue"
+           max="@Model.MaxValue"
+           value="@(Model.Result ?? 0)"
+           step="1"
+           aria-valuemin="@Model.MinValue"
+           aria-valuemax="@Model.MaxValue"
+           aria-valuenow="@(Model.Result ?? 0)">
+  </div>
+  <div class="grid-column-15">
+    <span class="range-output" for="@Model.Id-input">0</span>
+  </div>
+  <input hidden name="[@ViewData["index"]].Id" value="@Model.Id" />
+</div>

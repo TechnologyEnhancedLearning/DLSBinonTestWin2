@@ -1,0 +1,138 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+@use "../breakpoints";
+
+$nhs-dark-grey: #425563;
+$button-dark-blue: #003d78;
+$button-hover-colour: #4c6272;
+$button-active-colour: #002f5c;
+
+.inline-button {
+  height: 52px;
+  min-width: 100px;
+  box-shadow: none;
+  font-size: inherit;
+  font-weight: inherit;
+  border: 0;
+  border-radius: 0px 4px 4px 0px;
+  margin: 0;
+  padding: 8px 4px;
+  background-color: $button-dark-blue;
+
+  &:active {
+    top: inherit;
+    background-color: $button-active-colour;
+  }
+
+  &:hover:not(:focus):not(:active) {
+    background-color: $button-hover-colour;
+  }
+
+  @include mq($from: tablet) {
+    height: 40px;
+  }
+}
+
+.input-with-submit-button {
+  border: 2px solid $nhsuk-form-border-color;
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  height: 52px;
+  padding: 0 9px;
+  font-size: 16px;
+  float: left;
+  margin-bottom: nhsuk-spacing(4);
+  outline: none;
+
+  &:focus {
+    margin-right: 4px;
+  }
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+
+  @include mq($from: tablet) {
+    height: 40px;
+  }
+}
+
+.pagination-input-with-no-js-submit-button-border {
+  .js-enabled & {
+    border-right: 2px solid $nhsuk-form-border-color;
+    border-radius: 4px;
+
+    &:focus {
+      margin-right: 0;
+    }
+  }
+}
+
+.pagination-input-with-no-js-submit-button {
+  @extend .input-with-submit-button;
+
+  #js-styling-hidden-area-while-loading & {
+    @extend .pagination-input-with-no-js-submit-button-border
+  }
+}
+
+.button-small {
+  padding: 2px 10px;
+}
+
+.left-dropdown {
+  border: 2px solid $nhsuk-form-border-color;
+  border-radius: 4px;
+  height: 52px;
+  padding: 0 9px;
+  font-size: 16px;
+  float: left;
+  margin-bottom: nhsuk-spacing(4);
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+
+  @include mq($from: tablet) {
+    height: 40px;
+    margin-right: nhsuk-spacing(2);
+  }
+}
+
+.select-all-button {
+  @extend .inline-button;
+  width: auto;
+  border-radius: 4px;
+  margin-right: nhsuk-spacing(1);
+}
+
+.search-sort-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @include mq($from: large-desktop) {
+    flex-direction: row;
+  }
+
+  .search-container {
+    width: 100%;
+
+    @include mq($from: large-desktop) {
+      width: 40%;
+      margin-right: 8px;
+    }
+  }
+
+  .sort-container {
+    @include mq($from: large-desktop) {
+      flex: 1;
+    }
+
+    @include mq($until: large-desktop) {
+      width: 100%;
+    }
+  }
+}

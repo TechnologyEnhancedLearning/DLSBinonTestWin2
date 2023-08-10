@@ -1,0 +1,42 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.Common.ViewComponents
+@using DigitalLearningSolutions.Web.ViewModels.MyAccount
+@model ChangePasswordViewModel
+
+@{
+  var errorHasOccurred = !ViewData.ModelState.IsValid;
+  ViewData["Title"] = errorHasOccurred ? "Error: Change your password" : "Change your password";
+  var routeParamsForIndexLink = new Dictionary<string, string?> {
+    { "dlsSubApplication", Model.DlsSubApplication.UrlSegment },
+  };
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    @if (errorHasOccurred)
+    {
+      <vc:error-summary order-of-property-names="@(new[] { nameof(Model.CurrentPassword), nameof(Model.Password), nameof(Model.ConfirmPassword) })" />
+    }
+
+    <h1 class="nhsuk-heading-xl">Change password</h1>
+    <p class="nhsuk-body-l">
+      Use the form below to change the password for delegate and admin accounts associated with your email.
+    </p>
+
+    <form class="nhsuk-u-margin-bottom-3" method="post" asp-action="Index" asp-route-dlsSubApplication="@Model.DlsSubApplication.UrlSegment">
+      <vc:text-input asp-for="@nameof(Model.CurrentPassword)"
+                     label="Current password"
+                     populate-with-current-value="false"
+                     type="password"
+                     spell-check="false"
+                     hint-text=""
+                     autocomplete="off"
+                     css-class="nhsuk-u-width-one-half"
+                     required="true" />
+
+      <partial name="_SetPasswordFields" model="@(new SetPasswordViewModel(Model, "New password"))" />
+      <button class="nhsuk-button" type="submit">Change password</button>
+    </form>
+
+    <vc:cancel-link asp-controller="MyAccount" asp-action="Index" asp-all-route-data="@routeParamsForIndexLink" />
+  </div>
+</div>

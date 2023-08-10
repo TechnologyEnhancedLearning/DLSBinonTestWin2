@@ -1,0 +1,174 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.Frameworks
+@model AssessmentQuestionLevelDescriptorViewModel;
+@{
+  ViewData["Title"] = "Assessment Question";
+  ViewData["Application"] = "Framework Service";
+  ViewData["HeaderPathName"] = "Framework Service";
+}
+<link rel="stylesheet" href="@Url.Content("~/css/frameworks/frameworksShared.css")" asp-append-version="true">
+@section NavMenuItems {
+  <partial name="Shared/_NavMenuItems" />
+}
+  @section NavBreadcrumbs {
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFrameworks" asp-route-tabname="Mine">Frameworks</a></li>
+        @if (Model.FrameworkCompetencyId == 0)
+        {
+          <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFramework" asp-route-frameworkId="@Model.FrameworkId" asp-route-tabname="Details">Framework Details</a></li>
+          <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="FrameworkDefaultQuestions" asp-route-frameworkId="@ViewContext.RouteData.Values["frameworkId"]">Default Questions</a></li>
+          <li class="nhsuk-breadcrumb__item">@(Model.AssessmentQuestionDetail.ID == 0 ? "New" : "Edit") Assessment Question</li>
+        }
+        else
+        {
+          <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFramework" asp-fragment="fc-@Model.FrameworkCompetencyId" asp-route-frameworkId="@Model.FrameworkId" asp-route-tabname="Structure">Framework Structure</a></li>
+          <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="EditCompetencyAssessmentQuestions" asp-route-frameworkId="@Model.FrameworkId" asp-route-frameworkCompetencyId="@Model.FrameworkCompetencyId">@Model.VocabSingular() Assessment Questions</a></li>
+          <li class="nhsuk-breadcrumb__item">@(Model.AssessmentQuestionDetail.ID == 0 ? "New" : "Edit") Assessment Question</li>
+        }
+
+      </ol>
+      @if (Model.FrameworkCompetencyId == 0)
+      {
+        <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="FrameworkDefaultQuestions" asp-route-frameworkId="@ViewContext.RouteData.Values["frameworkId"]">Back to Default Questions</a></p>
+      }
+      else
+      {
+        <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="EditCompetencyAssessmentQuestions" asp-route-frameworkId="@Model.FrameworkId" asp-route-frameworkCompetencyId="@Model.FrameworkCompetencyId">Back to @Model.VocabSingular() Assessment Questions</a></p>
+      }
+    </div>
+  </nav>
+}
+  <h1>
+    @Model.AssessmentQuestionDetail.Question
+  </h1>
+  <form method="post">
+    @if (!ViewData.ModelState.IsValid)
+  {
+    <partial name="_ErrorSummary" />
+  }
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <p class="nhsuk-fieldset__heading">
+        @if (Model.AssessmentQuestionDetail.AssessmentQuestionInputTypeID == 3)
+        {
+
+          if (Model.LevelDescriptor.LevelValue == 0)
+          {
+            <text>
+              No or false option
+            </text>
+          }
+          else
+          {
+            <text>
+              Yes or true option
+            </text>
+          }
+        }
+        else
+        {
+          <text>Radio button option @Model.LevelDescriptor.LevelValue</text>
+        }
+
+
+      </p>
+    </legend>
+    <nhs-form-group nhs-validation-for="LevelDescriptor.LevelLabel">
+      <label class="nhsuk-label" for="tb-levelLabel-@Model.LevelDescriptor.LevelValue">
+        @if (Model.AssessmentQuestionDetail.AssessmentQuestionInputTypeID == 3)
+        {
+
+          if (Model.LevelDescriptor.LevelValue == 0)
+          {
+            <text>
+              No or false option label
+            </text>
+          }
+          else
+          {
+            <text>
+              Yes or true option label
+            </text>
+          }
+        }
+        else
+        {
+          <text>Option @Model.LevelDescriptor.LevelValue label</text>
+        }
+      </label>
+      <div class="nhsuk-hint" id="tb-levelLabel-@Model.LevelDescriptor.LevelValue-hint">
+        How will this radio button option be labelled?
+      </div>
+      <input class="nhsuk-input" id="tb-levelLabel-@Model.LevelDescriptor.LevelValue" asp-for="@Model.LevelDescriptor.LevelLabel" error-class-toggle="nhsuk-input--error" name="LevelLabel" type="text">
+    </nhs-form-group>
+    <nhs-form-group nhs-validation-for="LevelDescriptor.LevelDescription">
+      <label class="nhsuk-label" for="tb-levelDescription-@Model.LevelDescriptor.LevelValue">
+        @if (Model.AssessmentQuestionDetail.AssessmentQuestionInputTypeID == 3)
+        {
+
+          if (Model.LevelDescriptor.LevelValue == 0)
+          {
+            <text>
+              No or false option description
+            </text>
+          }
+          else
+          {
+            <text>
+              Yes or true option description
+            </text>
+          }
+        }
+        else
+        {
+          <text>Option @Model.LevelDescriptor.LevelValue description</text>
+        }
+      </label>
+      <div class="nhsuk-hint" id="tb-levelDescription-@Model.LevelDescriptor.LevelValue-hint">
+        What additional description (if any) should be provided for this radio button option?
+      </div>
+      <textarea class="nhsuk-input text-area-edit-90" placeholder="Optional" id="tb-levelDescription-@Model.LevelDescriptor.LevelValue" asp-for="@Model.LevelDescriptor.LevelDescription" name="LevelDescription" type="text"></textarea>
+    </nhs-form-group>
+    <input name="ID" type="hidden" asp-for="@Model.LevelDescriptor.ID" />
+    <input name="LevelValue" type="hidden" asp-for="@Model.LevelDescriptor.LevelValue" />
+    <input name="UpdatedByAdminID" type="hidden" asp-for="@Model.LevelDescriptor.UpdatedByAdminID" />
+  </fieldset>
+  @if (Model.LevelDescriptor.LevelValue > Model.AssessmentQuestionDetail.MinValue)
+  {
+    <a class="nhsuk-button nhsuk-button--secondary" role="button" asp-action="AssessmentQuestionLevelDescriptor" asp-route-level="@((int)Model.LevelDescriptor.LevelValue-1)" asp-route-frameworkId="@Model.FrameworkId" asp-route-assessmentQuestionId="@ViewContext.RouteData.Values["assessmentQuestionId"]" asp-route-frameworkCompetencyId="@Model.FrameworkCompetencyId">
+      Back
+    </a>
+  }
+  else
+  {
+    <a class="nhsuk-button nhsuk-button--secondary" role="button" asp-action="EditAssessmentQuestionScoring" asp-route-frameworkId="@Model.FrameworkId" asp-route-assessmentQuestionId="@ViewContext.RouteData.Values["assessmentQuestionId"]" asp-route-frameworkCompetencyId="@Model.FrameworkCompetencyId">
+      Back
+    </a>
+  }
+  <button class="nhsuk-button" type="submit">
+    Next
+  </button>
+  @if (Model.FrameworkCompetencyId == 0)
+  {
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" asp-action="FrameworkDefaultQuestions" asp-route-frameworkId="@ViewContext.RouteData.Values["frameworkId"]">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" focusable='false' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+        </svg>
+        Cancel
+      </a>
+    </div>
+  }
+  else
+  {
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" asp-action="EditCompetencyAssessmentQuestions" asp-route-frameworkId="@Model.FrameworkId" asp-route-frameworkCompetencyId="@Model.FrameworkCompetencyId">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" focusable='false' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+        </svg>
+        Cancel
+      </a>
+    </div>
+  }
+</form>

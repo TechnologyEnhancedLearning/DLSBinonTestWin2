@@ -1,0 +1,70 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.CourseSetup.AddNewCentreCourse
+@model SelectCourseViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/selectCourse.css")" asp-append-version="true">
+
+@{
+  var errorHasOccurred = !ViewData.ModelState.IsValid;
+  var errorMessage = errorHasOccurred ? ViewData.ModelState[nameof(Model.ApplicationId)]?.Errors[0].ErrorMessage : null;
+  var defaultOptionText = Model.ApplicationOptions.Any() ? "Select a course" : "No matching courses";
+  ViewData["Title"] = errorHasOccurred ? "Error: Add new centre course" : "Add new centre course";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    @if (errorHasOccurred) {
+      <vc:error-summary order-of-property-names="@(new []{ nameof(Model.ApplicationId) })" />
+    }
+
+    <h1 class="nhsuk-heading-xl">Add new centre course</h1>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+
+    @foreach (var filter in Model.Filters)
+    {
+      <partial name="AddNewCentreCourse/_CategoryTopicFilter" model="@filter" />
+    }
+
+    <form method="post" novalidate asp-controller="CourseSetup" asp-action="SelectCourse">
+      <input type="hidden" id="existing-filter-string" name="existingFilterString" value="@Model.ExistingFilterString" />
+      <input type="hidden" id="category-filter-string" name="CategoryFilterString" value="@Model.CategoryFilterString" />
+      <input type="hidden" id="topic-filter-string" name="TopicFilterString" value="@Model.TopicFilterString" />
+
+      <div class="nhsuk-u-width-full">
+        <div class="nhsuk-form-group @(errorHasOccurred ? "nhsuk-form-group--error" : "")">
+          <label class="nhsuk-label--s nhsuk-u-margin-bottom-1" for="searchable-elements">
+            Course
+          </label>
+          @if (errorHasOccurred)
+          {
+            <span class="nhsuk-error-message" id="@nameof(Model.ApplicationId)-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> @errorMessage
+            </span>
+          }
+          <select class="nhsuk-select nhsuk-u-width-full course-dropdown nhsuk-u-margin-bottom-2 @(errorHasOccurred ? "nhsuk-input--error" : "")"
+                  aria-describedby="@nameof(Model.ApplicationId)-error @nameof(Model.ApplicationId)-hint"
+                  id="searchable-elements"
+                  name="@nameof(Model.ApplicationId)"
+                  value="@Model.ApplicationId">
+
+            <option id="default-option" disabled selected=@(Model.ApplicationId == null)>@defaultOptionText</option>
+            @foreach (var item in Model.ApplicationOptions)
+            {
+              <partial name="AddNewCentreCourse/_SelectCourseFilterableSelectListItem" model="@item" />
+            }
+          </select>
+        </div>
+      </div>
+
+      <button class="nhsuk-button" type="submit">Next</button>
+    </form>
+
+    <vc:cancel-link asp-controller="CourseSetup" asp-action="Index" />
+
+  </div>
+</div>
+
+@section scripts {
+  <script src="@Url.Content("~/js/trackingSystem/addNewCentreCourseSelectCourse.js")" asp-append-version="true"></script>
+}

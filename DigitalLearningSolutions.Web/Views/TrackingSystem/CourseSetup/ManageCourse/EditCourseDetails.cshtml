@@ -1,0 +1,38 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.CourseSetup.CourseDetails
+@model EditCourseDetailsViewModel
+
+@{
+  var errorHasOccurred = !ViewData.ModelState.IsValid;
+  ViewData["Title"] = "Edit course details";
+  var cancelLinkData = new Dictionary<string, string> { { "customisationId", Model.CustomisationId.ToString() } };
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    @if (errorHasOccurred)
+    {
+      <vc:error-summary order-of-property-names="@(new[] {
+                                                   nameof(Model.CustomisationName),
+                                                   nameof(Model.Password),
+                                                   nameof(Model.NotificationEmails),
+                                                   nameof(Model.TutCompletionThreshold),
+                                                   nameof(Model.DiagCompletionThreshold) })" />
+    }
+
+    <h1 class="nhsuk-heading-xl">@ViewData["Title"]</h1>
+
+    <form class="nhsuk-u-margin-bottom-3"
+          method="post"
+          novalidate
+          asp-controller="ManageCourse"
+          asp-action="SaveCourseDetails"
+          asp-route-customisationId="@Model.CustomisationId">
+
+      <partial name="../Shared/_EditCourseDetailsFormInputs" model="Model" />
+
+      <button class="nhsuk-button" type="submit">Save</button>
+    </form>
+
+    <vc:cancel-link asp-controller="ManageCourse" asp-action="Index" asp-all-route-data="@cancelLinkData" />
+  </div>
+</div>

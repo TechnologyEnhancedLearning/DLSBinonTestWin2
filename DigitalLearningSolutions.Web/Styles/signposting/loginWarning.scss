@@ -1,0 +1,6 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+
+.launch-resource-button {
+  text-decoration: none;
+  @extend .nhsuk-u-font-size-22;
+}

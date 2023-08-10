@@ -1,0 +1,39 @@
+﻿@using DigitalLearningSolutions.Data.Models.SelfAssessments;
+@model AssessmentQuestion
+<span class="status-tag">
+
+  @if (Model.SelfAssessmentResultSupervisorVerificationId != null)
+  {
+    if (Model.Verified != null)
+    {
+      if ((bool)Model.SignedOff)
+      {
+        <span class="nhsuk-tag nhsuk-tag--green status-tag">
+          Confirmed
+        </span>
+      }
+      else
+      {
+        <span class="nhsuk-tag nhsuk-tag--red status-tag">
+          Rejected
+        </span>
+      }
+    }
+    else
+    {
+      if ((bool)Model.UserIsVerifier)
+      {
+        <span class="nhsuk-tag nhsuk-tag--orange status-tag">
+          Confirmation requested
+        </span>
+      }
+      else
+      {
+        <span class="nhsuk-tag nhsuk-tag--yellow status-tag">
+          Pending confirmation
+        </span>
+      }
+    }
+  }
+
+</span>

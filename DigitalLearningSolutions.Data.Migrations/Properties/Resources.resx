@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ApplyLPDefaultsSPChanges" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\ApplyLPDefaultsSPChanges.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="CreateOrAlterReorderFrameworkCompetenciesAndGroupsSPs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\CreateOrAlterReorderFrameworkCompetenciesAndGroupsSPs.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="DLSV2_106_CreateOrAlterInsertCustomisation_V3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-106-CreateOrAlterInsertCustomisation_V3.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_106_DropInsertCustomisation_V3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-106-DropInsertCustomisation_V3.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_133_AdjustScoresForFilteredSP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-133-AdjustScoresForFilteredSP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_133_UnAdjustScoresForFilteredSP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-133-UnAdjustScoresForFilteredSP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_153_DropFilteredFunctionTweak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-153-DropFilteredFunctionTweak.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_153_DropFilteredSPFixes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-153-DropFilteredSPFixes.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_153_FilteredFunctionTweak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-153-FilteredFunctionTweak.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_153_FilteredSPFixes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-153-FilteredSPFixes.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="dlsv2_172_fixcustomisationtutorialprogressissue_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\dlsv2-172-fixcustomisationtutorialprogressissue-down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="dlsv2_172_fixcustomisationtutorialprogressissue_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\dlsv2-172-fixcustomisationtutorialprogressissue-up.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_236_GetCompletedCoursesTweak_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-236-GetCompletedCoursesTweak_DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_236_GetCompletedCoursesTweak_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-236-GetCompletedCoursesTweak_UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_237_GetActiveAvailableTweak_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-237-GetActiveAvailableTweak_DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_237_GetActiveAvailableTweak_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-237-GetActiveAvailableTweak_UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_272_AlterGetLinkedFieldNameFunction_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-272-AlterGetLinkedFieldNameFunction_DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_272_AlterGetLinkedFieldNameFunction_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-272-AlterGetLinkedFieldNameFunction_UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_379_ReorderCompetencyAssessmentQuestionsSP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-379-ReorderCompetencyAssessmentQuestionsSP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DLSV2_581_GetActiveAvailableCustomisationsForCentreFiltered_V6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-581-GetActiveAvailableCustomisationsForCentreFiltered_V6.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_95_AddSystemVersioning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-95_AddSystemVersioning.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DLSV2_95_RemoveSystemVersioning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DLSV2-95_RemoveSystemVersioning.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DropActiveAvailableV6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DropActiveAvailableV6.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DropApplyLPDefaultsSPChanges" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DropApplyLPDefaultsSPChanges.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="DropFilteredSPs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DropFilteredSPs.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DropGetActiveAvailableV5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DropGetActiveAvailableV5.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="DropReorderFrameworkCompetenciesAndGroupsSPs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DropReorderFrameworkCompetenciesAndGroupsSPs.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="FilteredSPs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\FilteredSPs.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="GetActiveAvailableV5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\GetActiveAvailableV5.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="HEEDLS_667_GetActiveAvailableCustomisationsForCentreFiltered_V5_Signposting_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\HEEDLS-667-GetActiveAvailableCustomisationsForCentreFiltered_V5-Signposting-DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="HEEDLS_667_GetActiveAvailableCustomisationsForCentreFiltered_V5_Signposting_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\HEEDLS-667-GetActiveAvailableCustomisationsForCentreFiltered_V5-Signposting-UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UAR-831-CreateViewsForAdminUsersAndCandidatesTables-UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\UAR-831-CreateViewsForAdminUsersAndCandidatesTables-UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UAR-831-CreateViewsForAdminUsersAndCandidatesTables-DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\UAR-831-CreateViewsForAdminUsersAndCandidatesTables-DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UAR_858_SnapshotData_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\UAR-858-SnapshotData-UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UAR_859_PopulateUsersTableFromAccountsTables_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\UAR-859-PopulateUsersTableFromAccountsTables-DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD-786-GetSelfRegisteredFlag_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-786-GetSelfRegisteredFlag_UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD-786-GetSelfRegisteredFlag_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-786-GetSelfRegisteredFlag_DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_1043_getactivitiesforenrolment_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td-1043-getactivitiesforenrolment_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_1043_getactivitiesforenrolment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td-1043-getactivitiesforenrolment.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_264_alterviewadminusersaddcentrename_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td_264_alterviewadminusersaddcentrename_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_264_alterviewadminusersaddcentrename_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td_264_alterviewadminusersaddcentrename_up.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_1131_alterviewcandidatesadduserid_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td_1131_alterviewcandidatesadduserid_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_1131_alterviewcandidatesadduserid_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td_1131_alterviewcandidatesadduserid_up.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CookiePolicy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CookiePolicy.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1220_AddSystemVersioning_SelfAssessmentResultSupervisorVerifications" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1220-AddSystemVersioning_SelfAssessmentResultSupervisorVerifications.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1220_RemoveSystemVersioning_SelfAssessmentResultSupervisorVerifications" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1220-RemoveSystemVersioning_SelfAssessmentResultSupervisorVerifications.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="td_1610_update_getactivitiesfordelegateenrolment_proc_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td-1610-update_getactivitiesfordelegateenrolment_proc_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="td_1610_update_getactivitiesfordelegateenrolment_proc_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\td-1610-update_getactivitiesfordelegateenrolment_proc_up.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="TD_1766_GetActivitiesForDelegateEnrolmentTweak_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1766-GetActivitiesForDelegateEnrolmentTweak_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1766_GetActivitiesForDelegateEnrolmentTweak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1766-GetActivitiesForDelegateEnrolmentTweak.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1913_AlterGroupCustomisation_Add_V2_DOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1913-AlterGroupCustomisation_Add_V2_DOWN.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="TD_1913_AlterGroupCustomisation_Add_V2_UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1913-AlterGroupCustomisation_Add_V2_UP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="TD_2117_CreatePopulateReportSelfAssessmentActivityLog_SP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-2117-CreatePopulateReportSelfAssessmentActivityLog-SP.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1766_GetCurrentCoursesForCandidateTweak_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1766-GetCurrentCoursesForCandidateTweak_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_1766_GetCurrentCoursesForCandidateTweak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-1766-GetCurrentCoursesForCandidateTweak.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_2094_GetActivitiesForDelegateEnrolmentDelegateStatusPropertyTweak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-2094-GetActivitiesForDelegateEnrolmentDelegateStatusPropertyTweak.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="TD_2094_GetActivitiesForDelegateEnrolmentDelegateStatusPropertyTweak_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\TD-2094-GetActivitiesForDelegateEnrolmentDelegateStatusPropertyTweak_down.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+</root>

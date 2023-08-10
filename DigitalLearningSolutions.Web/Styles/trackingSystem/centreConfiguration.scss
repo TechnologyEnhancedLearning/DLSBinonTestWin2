@@ -1,0 +1,39 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+
+.centre-detail-image__downsize {
+  display: block;
+  max-width: 350px;
+  max-height: 350px;
+  height: auto;
+  width: auto;
+
+  @include govuk-media-query($until: large-desktop) {
+    max-width: 275px;
+    max-height: 275px;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    max-width: 250px;
+    max-height: 200px;
+  }
+}
+
+.centre-detail--placeholder-image__downsize {
+  display: block;
+  width: 300px;
+  height: 150px;
+
+  @include govuk-media-query($until: desktop) {
+    width: 240px;
+    height: 120px;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    width: 200px;
+    height: 100px;
+  }
+}
+
+.preserve-whitespace {
+  white-space: pre-wrap;
+}

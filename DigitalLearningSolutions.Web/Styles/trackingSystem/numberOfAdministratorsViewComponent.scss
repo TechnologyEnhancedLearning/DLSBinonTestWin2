@@ -1,0 +1,9 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+
+dd.nhsuk-summary-list__value {
+  text-align: right;
+
+  @include govuk-media-query($until: tablet) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,17 @@
+﻿@{
+  var isSupervisorResultsReviewed = (bool)ViewData["isSupervisorResultsReviewed"];
+  var questionsCount = (int)ViewData["questionsCount"];
+  var selfAssessedCount = (int)ViewData["selfAssessedCount"];
+  var verifiedCount = (int)ViewData["verifiedCount"];
+}
+
+<span class="score">
+  Self assessed: @selfAssessedCount / @questionsCount
+</span>
+@if (isSupervisorResultsReviewed)
+{
+  <span class="score">
+    Confirmed: @verifiedCount / @questionsCount
+  </span>
+}
+<br />

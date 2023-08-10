@@ -1,0 +1,90 @@
+﻿@using DigitalLearningSolutions.Web.Models.Enums
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Delegates.AllDelegates
+@using DigitalLearningSolutions.Web.Helpers
+@model AllDelegatesViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/delegates/allDelegates.css")" asp-append-version="true">
+
+@{
+  ViewData["Title"] = "Delegates";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-quarter">
+    <nav class="side-nav-menu" aria-label="Side navigation bar">
+      <partial name="~/Views/TrackingSystem/Delegates/Shared/_DelegatesSideNavMenu.cshtml" model="DelegatePage.AllDelegates" />
+    </nav>
+  </div>
+
+  <div class="nhsuk-grid-column-three-quarters">
+    @if (Model.JavascriptSearchSortFilterPaginateEnabled)
+    {
+      <vc:loading-spinner page-has-side-nav-menu="true" />
+    }
+    <div id="@(Model.JavascriptSearchSortFilterPaginateEnabled ? "js-styling-hidden-area-while-loading" : "no-js-styling")">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          <h1 id="page-heading" class="nhsuk-heading-xl">@ViewData["Title"]</h1>
+        </div>
+        <div class="nhsuk-grid-column-two-thirds heading-button-group">
+          <a class="nhsuk-button nhsuk-button--secondary heading-button" asp-controller="RegisterDelegateByCentre" asp-action="Index" role="button">
+            Register
+          </a>
+          <a class="nhsuk-button nhsuk-button--secondary heading-button" asp-controller="EmailDelegates" asp-action="Index" role="button">
+            Email
+          </a>
+          <a class="nhsuk-button nhsuk-button--secondary heading-button" asp-controller="BulkUpload" asp-action="Index" role="button">
+            Upload
+          </a>
+          <a class="nhsuk-button nhsuk-button--secondary heading-button"
+             id="export"
+             asp-controller="AllDelegates"
+             asp-action="Export"
+             asp-route-searchString="@Model.SearchString"
+             asp-route-sortBy="@Model.SortBy"
+             asp-route-sortDirection="@Model.SortDirection"
+             asp-route-existingFilterString="@Model.ExistingFilterString"
+             role="button">
+            Export
+          </a>
+        </div>
+      </div>
+
+      <partial name="SearchablePage/Configurations/_ThreeQuarterWidthSearchSortAndFilter" model="Model" />
+
+      @if (Model.NoDataFound)
+      {
+        <p class="nhsuk-u-margin-top-4" role="alert">
+          <b>No delegates found.</b>
+        </p>
+      }
+      else
+      {
+        <partial name="SearchablePage/Configurations/_ResultsCountAndItemsPerPage" model="Model" />
+        <partial name="SearchablePage/_TopPagination" model="Model" />
+        <partial name="SearchablePage/_ResultCountAndPageAlerts" model="Model" />
+
+        <div id="searchable-elements">
+          @foreach (var delegateModel in Model.Delegates)
+          {
+            if (DisplayStringHelper.IsGuid(delegateModel.DelegateInfo.Email)) delegateModel.DelegateInfo.Email = null;
+            <partial name="_SearchableDelegateCard" model="delegateModel" />
+          }
+        </div>
+      }
+
+      <partial name="SearchablePage/_BottomPagination" model="Model" />
+    </div>
+
+    <nav class="side-nav-menu-bottom" aria-label="Bottom navigation bar">
+      <partial name="~/Views/TrackingSystem/Delegates/Shared/_DelegatesSideNavMenu.cshtml" model="DelegatePage.AllDelegates" />
+    </nav>
+  </div>
+</div>
+
+@if (Model.JavascriptSearchSortFilterPaginateEnabled)
+{
+  @section scripts {
+  <script src="@Url.Content("~/js/trackingSystem/allDelegates.js")" asp-append-version="true"></script>
+}
+}

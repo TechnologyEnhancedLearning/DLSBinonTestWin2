@@ -1,0 +1,47 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.LearningMenu
+@model TutorialNextLinkViewModel
+
+@if (Model.NextTutorialId != null)
+{
+  <a class="nhsuk-button"
+   asp-controller="LearningMenu"
+   asp-action="Tutorial"
+   asp-route-customisationId="@Model.CustomisationId"
+   asp-route-sectionId="@Model.SectionId"
+   asp-route-tutorialId="@Model.NextTutorialId">
+
+    Next tutorial
+  </a>
+}
+else if (Model.PostLearningAssessmentPath != null)
+{
+  <a class="nhsuk-button"
+   asp-controller="LearningMenu"
+   asp-action="PostLearning"
+   asp-route-customisationId="@Model.CustomisationId"
+   asp-route-sectionId="@Model.SectionId">
+
+    Post learning assessment
+  </a>
+}
+else if (Model.NextSectionId != null)
+{
+  <a class="nhsuk-button"
+   asp-controller="LearningMenu"
+   asp-action="Section"
+   asp-route-customisationId="@Model.CustomisationId"
+   asp-route-sectionId="@Model.NextSectionId">
+
+    Next section
+  </a>
+}
+else
+{
+  <a class="nhsuk-button"
+   asp-controller="LearningMenu"
+   asp-action="Index"
+   asp-route-customisationId="@Model.CustomisationId">
+
+    Finish
+  </a>
+}

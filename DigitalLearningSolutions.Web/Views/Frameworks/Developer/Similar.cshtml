@@ -1,0 +1,89 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.Frameworks
+@model SimilarViewModel
+@{
+  ViewData["Title"] = "Similar Frameworks";
+  ViewData["Application"] = "Framework Service";
+  ViewData["HeaderPathName"] = "Framework Service";
+}
+
+@section NavMenuItems {
+  <partial name="Shared/_NavMenuItems" />
+}
+
+  @section NavBreadcrumbs {
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFrameworks" asp-route-tabname="Mine">Frameworks</a></li>
+        <li class="nhsuk-breadcrumb__item">Create framework</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" asp-action="ViewFrameworks" asp-route-tabname="Mine">Back to My Frameworks</a></p>
+    </div>
+  </nav>
+}
+  <h1>Create a new framework</h1>
+  @if (Model.SameFrameworks.Count() > 0)
+{
+  <div class="nhsuk-form-group nhsuk-form-group--error">
+    <h2>Duplicate framework name</h2>
+    <p class="nhsuk-error-message">
+      Your framework <span class="nhsuk-u-font-weight-bold">@Model.FrameworkName</span> has the same name as an existing framework:
+    </p>
+    <partial name="Shared/_BrandedFrameworkTable" model="Model.SameFrameworks" />
+  </div>
+  <p class="nhsuk-u-margin-top-6">
+    If your framework is distinct from the one above, please try to create it again using a distinct name.
+  </p>
+  <a class="nhsuk-button nhsuk-button--secondary" role="button" asp-action="ViewFrameworks" asp-route-tabname="Mine">
+    Cancel
+  </a>
+
+}
+else
+{
+  <h2>Possible duplications</h2>
+  <p>
+    Your framework <span class="nhsuk-u-font-weight-bold">@Model.FrameworkName</span> is a possible duplicate of the following @if (Model.MatchingSearchResults == 1)
+    {
+      <span>framework</span>
+    }
+    else
+    {
+      <span class="nhsuk-u-font-weight-bold">@Model.MatchingSearchResults</span> <span>frameworks</span>
+    }:
+  </p>
+  <partial name="Shared/_BrandedFrameworkTable" model="Model.SimilarFrameworks" />
+  <div class="nhsuk-warning-callout nhsuk-u-margin-top-6">
+    <h3 class="nhsuk-warning-callout__label">
+      <span role="text">
+        <span class="nhsuk-u-visually-hidden">Important: </span>
+        Review possible duplicates before you continue
+      </span>
+    </h3>
+    <p>
+      Please review these frameworks to check for possible duplication. If the @if (Model.MatchingSearchResults == 1)
+      {
+        <span>framework listed above is</span>
+      }
+      else
+      {
+        <span>frameworks listed above are</span>
+      } distinct from <span class="nhsuk-u-font-weight-bold">@Model.FrameworkName</span>, you can continue to create it.
+    </p>
+  </div>
+  <a class="nhsuk-button nhsuk-button--secondary" role="button" asp-action="CreateNewFramework" asp-route-actionname="@(ViewContext.RouteData.Values["actionname"])">
+    Back
+  </a>
+  <a class="nhsuk-button" role="button" asp-action="SaveNewFramework" asp-route-frameworkname="@Model.FrameworkName" asp-route-actionname="@(ViewContext.RouteData.Values["actionname"])">
+    Next
+  </a>
+  <div class="nhsuk-back-link">
+    <a class="nhsuk-back-link__link" asp-action="ViewFrameworks" asp-route-tabname="Mine">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" focusable='false' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+      </svg>
+      Cancel
+    </a>
+  </div>
+}
+

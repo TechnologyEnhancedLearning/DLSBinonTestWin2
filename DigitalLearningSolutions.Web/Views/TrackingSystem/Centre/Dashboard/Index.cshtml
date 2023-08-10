@@ -1,0 +1,38 @@
+﻿@using DigitalLearningSolutions.Web.Models.Enums
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Centre.Dashboard
+@model CentreDashboardViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/centreDashboard.css")" asp-append-version="true">
+
+@{
+  ViewData["Title"] = "Centre dashboard";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-quarter">
+    <nav class="side-nav-menu" aria-label="Side navigation bar">
+      <partial name="~/Views/TrackingSystem/Centre/Shared/_CentreSideNavMenu.cshtml" model="CentrePage.Dashboard" />
+    </nav>
+  </div>
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-xl" id="app-page-heading">@ViewData["Title"]</h1>
+    <p class="nhsuk-body-m word-break">
+      Welcome <span class="nhsuk-u-font-weight-bold">@Model.FirstName</span>. You are managing <span class="nhsuk-u-font-weight-bold">@Model.CourseCategory</span> courses.
+    </p>
+
+    <partial name="_DashboardTopCardGroup" model="Model" />
+
+    <partial name="_DashboardCentreDetails" model="Model" />
+
+    <partial name="_DashboardBottomCardGroup" />
+
+    <a class="nhsuk-button" role="button" asp-controller="SystemNotifications" asp-action="Index">
+      @Model.ViewNotificationsButtonText
+    </a>
+
+    <nav class="side-nav-menu-bottom" aria-label="Bottom navigation bar">
+      <partial name="~/Views/TrackingSystem/Centre/Shared/_CentreSideNavMenu.cshtml" model="CentrePage.Dashboard" />
+    </nav>
+
+  </div>
+</div>

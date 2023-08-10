@@ -1,0 +1,14 @@
+﻿@use "nhsuk-frontend/packages/core/all" as *;
+
+.card-with-buttons {
+  background-color: #fff;
+  @extend .nhsuk-u-margin-top-3;
+  @extend .nhsuk-u-margin-bottom-4;
+  padding-bottom: 16px;
+  border: 1px solid $nhsuk-border-color;
+  border-bottom-width: 4px;
+}
+
+.card-with-buttons .nhsuk-expander {
+  border: none
+}

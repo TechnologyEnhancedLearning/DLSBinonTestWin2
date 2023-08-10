@@ -1,0 +1,28 @@
+﻿@using DigitalLearningSolutions.Web.Helpers
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Centre.ContractDetails
+@model ContractDetailsViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/contractDetails.css")" asp-append-version="true">
+
+@{
+  ViewData["Title"] = "Contract details";
+}
+
+@section NavBreadcrumbs {
+  <partial name="~/Views/TrackingSystem/Shared/_CentreDashboardBreadcrumbs.cshtml" />
+}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">@ViewData["Title"]</h1>
+
+      <partial name="_ContractDetailsList" model="Model" />
+
+      @if (User.HasCentreManagerPermissions())
+    {
+      <a class="nhsuk-button nhsuk-button--secondary" asp-controller="Administrator" asp-action="Index" role="button">
+        Manage users
+      </a>
+    }
+  </div>
+</div>

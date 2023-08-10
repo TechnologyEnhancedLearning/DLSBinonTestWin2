@@ -1,0 +1,63 @@
+﻿@using DigitalLearningSolutions.Web.Helpers
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.Delegates
+@model UnapprovedDelegate
+
+<div class="card-with-buttons word-break nhsuk-panel" id="@Model.Id-card">
+  <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        @Model.TitleName
+        @DisplayStringHelper.GetEmailDisplayString(Model.Email)
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row basic-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Delegate ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            @Model.CandidateNumber
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row basic-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date registered
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            @Model.DateRegistered?.ToShortDateString()
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row basic-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Job group
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            @Model.JobGroup
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row basic-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Professional Registration Number
+          </dt>
+          <partial name="_SummaryFieldValue" model="@Model.ProfessionalRegistrationNumber" />
+        </div>
+        @foreach (var delegateRegistrationPrompt in Model.DelegateRegistrationPrompts)
+        {
+          <partial name="../Shared/_CustomPromptSummaryListWithButtonRow" model="delegateRegistrationPrompt" />
+        }
+      </dl>
+    </div>
+  </details>
+  <div class="flex-row nhsuk-u-margin-left-4">
+    <form class="delegate-approvals-button-wrapper" method="post">
+      <input type="hidden" name="delegateId" value="@Model.Id" />
+      <button class="nhsuk-button nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-2" asp-controller="DelegateApprovals" asp-action="ApproveDelegate">
+        Approve
+      </button>
+      <button class="nhsuk-button delete-button nhsuk-u-margin-bottom-2" asp-controller="DelegateApprovals" asp-action="DelegateRejectionPage">
+        Reject
+      </button>
+    </form>
+  </div>
+</div>

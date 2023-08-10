@@ -1,0 +1,95 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.LearningPortal.SelfAssessments
+@model SelfAssessmentCompetencyViewModel
+@{
+  ViewData["Title"] = "Competency Preview";
+  ViewData["SelfAssessmentTitle"] = @Model.Assessment.Name;
+  ViewData["HeaderPathName"] = "Framework Service";
+}
+<link rel="stylesheet" href="@Url.Content("~/css/learningPortal/selfAssessment.css")" asp-append-version="true">
+@section NavMenuItems {
+  <partial name="Shared/_NavMenuItems" />
+}
+  @section NavBreadcrumbs {
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFrameworks" asp-route-tabname="Mine">Frameworks</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link trigger-loader" asp-action="ViewFramework" asp-route-frameworkCompetencyGroupId="@ViewContext.RouteData.Values["frameworkCompetencyGroupId"]" asp-fragment="fc-@(ViewContext.RouteData.Values["frameworkCompetencyId"])" asp-route-frameworkId="@(ViewContext.RouteData.Values["frameworkId"])" asp-route-tabname="Structure">Framework Structure</a></li>
+        <li class="nhsuk-breadcrumb__item">Preview Competency</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" asp-action="ViewFramework" asp-route-frameworkCompetencyGroupId="@ViewContext.RouteData.Values["frameworkCompetencyGroupId"]" asp-fragment="fc-@(ViewContext.RouteData.Values["frameworkCompetencyId"])" asp-route-frameworkId="@(ViewContext.RouteData.Values["frameworkId"])" asp-route-tabname="Structure">Back to framework structure</a></p>
+    </div>
+  </nav>
+}
+  <h1 class="competency-group-header nhsuk-u-font-size-32">@Model.Competency.CompetencyGroup</h1>
+  <div class="nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-4">
+    @if (Model.Competency.Description != null)
+  {
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <h2 class="nhsuk-u-font-size-24 nhsuk-u-margin-bottom-0">
+          <span class="nhsuk-details__summary-text">
+            @Model.Competency.Name
+          </span>
+        </h2>
+      </summary>
+      <div class="nhsuk-details__text">
+        @(Html.Raw(@Model.Competency.Description))
+      </div>
+    </details>
+  }
+  else
+  {
+    <h2 class="nhsuk-u-margin-bottom-0 nhsuk-u-font-size-24">
+      @Model.Competency.Name
+    </h2>
+  }
+</div>
+<partial name="_CompetencyFlags" model="Model.Competency.CompetencyFlags" />
+<div class="nhsuk-u-padding-4"></div>
+@foreach (var question in @Model.Competency.AssessmentQuestions)
+{
+  <div class="nhsuk-form-group">
+    @if (question.AssessmentQuestionInputTypeID == 2)
+    {
+      <partial name="~/Views/LearningPortal/SelfAssessments/_SliderQuestion.cshtml" model="question" view-data="@(new ViewDataDictionary(ViewData) { { "index", question.MinValue } })" />
+    }
+    else
+    {
+      <partial name="~/Views/LearningPortal/SelfAssessments/_RadioQuestion.cshtml" model="question" view-data="@(new ViewDataDictionary(ViewData) { { "index", question.MinValue } })" />
+    }
+  </div>
+  @if (question.IncludeComments)
+  {
+    <partial name="~/Views/LearningPortal/SelfAssessments/_CommentsInput.cshtml" model="question" view-data="@(new ViewDataDictionary(ViewData) { { "index", question.MinValue } })" />
+  }
+}
+
+<div class="nhsuk-u-margin-top-4">
+  Question 1 of 1
+</div>
+<button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-top-1" disabled>
+  Save and continue
+</button>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-back-link grid-column-85">
+    <span class="nhsuk-back-link__link">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Previous question
+    </span>
+    <span class="nhsuk-back-link__link skip-link">
+      Skip
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" id="skip-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+      </svg>
+    </span>
+  </div>
+</div>
+<a class="nhsuk-button" role="button" asp-action="ViewFramework" asp-route-frameworkCompetencyGroupId="@ViewContext.RouteData.Values["frameworkCompetencyGroupId"]" asp-fragment="fc-@(ViewContext.RouteData.Values["frameworkCompetencyId"])" asp-route-frameworkId="@(ViewContext.RouteData.Values["frameworkId"])" asp-route-tabname="Structure">
+  Done
+</a>
+@section scripts {
+  <script src="@Url.Content("~/js/learningPortal/selfAssessment.js")" asp-append-version="true"></script>
+}

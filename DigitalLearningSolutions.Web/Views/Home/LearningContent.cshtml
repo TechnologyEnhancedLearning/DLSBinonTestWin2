@@ -1,0 +1,24 @@
+@using DigitalLearningSolutions.Web.ViewModels.Home
+@model LearningContentLandingPageViewModel
+
+@{
+  ViewData["Title"] = "Welcome - Learning Content";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/home/learningContent.css")" />
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <partial name="MiniHub/_MiniHubHeading" model="@Model.MiniHubNavigationModel" />
+
+    <partial name="MiniHub/_ContentsList" model="@Model.MiniHubNavigationModel" />
+
+    @foreach (var content in Model.LearningContentItems)
+    {
+      <partial name="_LearningContentCard" model="content" />
+    }
+
+    <partial name="MiniHub/_Pagination" model="@Model.MiniHubNavigationModel" />
+  </div>
+</div>

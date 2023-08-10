@@ -1,0 +1,242 @@
+﻿@use "inputrange" as *;
+@use "nhsuk-frontend/packages/core/all" as *;
+@use "courses" as *;
+@use "../shared/searchableElements/searchableElements" as *;
+
+.competency-group-header {
+  padding-top: 0;
+  margin-bottom: 4px;
+}
+
+.range-input-row {
+  display: flex;
+  align-items: center;
+}
+
+.range-output {
+  display: none;
+
+  .js-enabled & {
+    display: inline;
+  }
+}
+
+.left-label {
+  float: left;
+}
+
+.right-label {
+  float: right;
+}
+
+.competency-group-panel {
+  padding-top: 0;
+  padding-bottom: 24px;
+  background-color: #fff;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+.competency-group-panel .nhsuk-expander {
+  border: none
+}
+
+details.nhsuk-details {
+  padding: 0;
+  margin: 0;
+
+  summary.nhsuk-details__summary {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.nhsuk-details__summary-text {
+  text-decoration: none;
+}
+
+.score {
+  margin-left: 48px;
+  color: $color_nhsuk-black;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.outer-score-container {
+  margin-left: 16px;
+
+  @include mq($from: tablet) {
+    margin-left: 24px;
+  }
+
+  details[open] ~ & {
+    display: none;
+  }
+  // IE11 only, prevent from displaying when js disabled
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    display: none;
+
+    .js-enabled & {
+      display: block;
+    }
+  }
+}
+
+.competency-group-title {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.review-card {
+  padding-bottom: 0;
+  padding-top: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: $color_nhsuk-grey-5;
+  box-sizing: border-box;
+}
+
+.review-question {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.review-result {
+  text-align: center;
+  margin: 0;
+  padding-bottom: 16px;
+}
+
+.finish-review-button {
+  margin-top: 40px;
+}
+
+.grid-column-85 {
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 85%;
+}
+
+.grid-column-15 {
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 15%;
+}
+
+.skip-link {
+  float: right;
+}
+
+#skip-arrow {
+  left: auto;
+  right: -24px
+}
+
+.asset-title-header {
+  padding-bottom: 25px;
+}
+
+.asset-title-header .img-circle {
+  height: 47px;
+  width: 47px;
+  border-radius: 5%;
+  border: 1px solid #768692;
+  text-align: center;
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.asset-title-header .title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: $nhsuk-secondary-text-color;
+  padding: 1rem 0 0 0;
+  display: inline-block;
+}
+
+.img-screenshot {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 2%;
+  border: 1px solid #768692;
+  margin-bottom: 15px;
+}
+
+.playlist-title {
+  min-height: 72px;
+}
+
+@include mq($from: 768px, $until: 1024px) {
+  .asset-card-header {
+    min-height: 222px;
+  }
+}
+
+@include mq($from: 1024px) {
+  .asset-card-header {
+    min-height: 163px;
+  }
+}
+
+.tag.tag-article {
+  background-color: $nhsuk-link-active-color;
+}
+
+.tag.tag-online.course {
+  background-color: $nhsuk-link-color;
+}
+
+.tag.tag-learning.guide {
+  background-color: $nhsuk-link-hover-color;
+}
+
+.tag.tag-video {
+  background-color: $nhsuk-link-visited-color;
+}
+
+.course-card {
+  background-color: #fff;
+  @extend .nhsuk-u-margin-top-3;
+  @extend .nhsuk-u-margin-bottom-3;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.course-card .nhsuk-expander {
+  border: none
+}
+
+.nhsuk-table__row:hover {
+  background-color: inherit;
+}
+
+.row-outer:target {
+  background-color: rgba(255, 249, 146, 1);
+  animation: fade 4s forwards;
+}
+
+@keyframes fade {
+  from {
+    background-color: rgba(255, 249, 146, 1);
+  }
+
+  to {
+    background-color: rgba(255, 249, 146, 0);
+  }
+}
+
+.text-area-edit-90 {
+  height: 90px
+}

@@ -1,0 +1,83 @@
+﻿@using DigitalLearningSolutions.Web.ViewModels.Common
+@using DigitalLearningSolutions.Web.ViewModels.Register
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+
+@model IEditProfessionalRegistrationNumbers
+
+@{
+  var hasPrnErrorHasOccurred =
+    ViewData.ModelState.GetFieldValidationState(nameof(Model.HasProfessionalRegistrationNumber)) == ModelValidationState.Invalid;
+  var professionalRegNumberErrorHasOccurred =
+    ViewData.ModelState.GetFieldValidationState(nameof(Model.ProfessionalRegistrationNumber)) == ModelValidationState.Invalid;
+  var optionYesSelected = Model.HasProfessionalRegistrationNumber == true;
+  var optionNoSelected = Model.HasProfessionalRegistrationNumber == false;
+  const string professionalRegConditionalId = "professional-reg-conditional-Id";
+
+  var isRegisterJourney = Model is LearnerInformationViewModel;
+
+  var subject = Model.IsSelfRegistrationOrEdit ? "you" : "they";
+  var capitalisedSubject = Model.IsSelfRegistrationOrEdit ? "You" : "They";
+}
+
+<input type="hidden" asp-for="IsSelfRegistrationOrEdit" />
+
+<div class="nhsuk-form-group @(hasPrnErrorHasOccurred ? " nhsuk-form-group--error" : "" )">
+  <fieldset id="HasProfessionalRegistrationNumber" class="nhsuk-fieldset" aria-describedby="professional-registration-hint">
+
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <span class="nhsuk-label">
+        Do @subject have a Professional Registration Number?
+      </span>
+      <span class="nhsuk-hint nhsuk-u-margin-bottom-0" id="professional-registration-hint">
+        @capitalisedSubject should have a professional registration number if @subject are a health professional registered with a professional body such as the NMC, GMC or GDC.
+        @(isRegisterJourney ? $"If you don't have it to hand, {subject} can provide it later by visiting My account / Edit details." : "")
+      </span>
+    </legend>
+
+    @if (hasPrnErrorHasOccurred)
+    {
+      <span class="nhsuk-error-message" id="no-selection-error">
+        <span class="nhsuk-u-visually-hidden">Error:</span> @ViewData.ModelState[nameof(Model.HasProfessionalRegistrationNumber)].Errors[0].ErrorMessage
+      </span>
+    }
+
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+      <div class="nhsuk-radios__item">
+        <input name="@nameof(Model.HasProfessionalRegistrationNumber)"
+               class="nhsuk-radios__input"
+               id="HasProfessionalRegistrationNumber_No"
+               type="radio"
+               value="false"
+               @(optionNoSelected ? "checked" : "" ) />
+        <label class="nhsuk-label nhsuk-radios__label" for="HasProfessionalRegistrationNumber_No">
+          No
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input name="@nameof(Model.HasProfessionalRegistrationNumber)"
+               class="nhsuk-radios__input"
+               id="HasProfessionalRegistrationNumber_Yes"
+               type="radio"
+               value="true"
+               aria-controls="@professionalRegConditionalId"
+               @(optionYesSelected ? "checked" : "" ) />
+        <label class="nhsuk-label nhsuk-radios__label" for="HasProfessionalRegistrationNumber_Yes">
+          Yes
+        </label>
+      </div>
+      <div class="nhsuk-radios__conditional @(optionYesSelected ? " " : " nhsuk-radios__conditional--hidden") @(professionalRegNumberErrorHasOccurred ? "form-group-wrapper--error" : "" )"
+           id="@professionalRegConditionalId">
+        <vc:text-input asp-for="@nameof(Model.ProfessionalRegistrationNumber)"
+                       label="Professional Registration Number"
+                       populate-with-current-value="true"
+                       type="text"
+                       spell-check="false"
+                       hint-text=""
+                       autocomplete="off"
+                       css-class="nhsuk-u-width-one-half"
+                       required="true" />
+      </div>
+    </div>
+  </fieldset>
+</div>

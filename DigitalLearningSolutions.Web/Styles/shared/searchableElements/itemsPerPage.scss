@@ -1,0 +1,61 @@
+@use "nhsuk-frontend/packages/core/all" as *;
+@use "common" as *;
+
+.items-per-page-box-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+
+  @include mq($until: tablet) {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}
+
+.items-per-page-dropdown {
+  @extend .pagination-input-with-no-js-submit-button;
+  width: 100%;
+
+  @include mq($from: tablet) {
+    flex: 1;
+  }
+}
+
+.items-per-page-select-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+
+  @include mq($from: tablet) {
+    justify-content: end;
+  }
+}
+
+.items-per-page-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  @include mq($from: tablet) {
+    width: 50%;
+  }
+}
+
+.items-per-page-submit {
+  @extend .inline-button;
+
+  #js-styling-hidden-area-while-loading & {
+    .js-enabled & {
+      display: none;
+    }
+  }
+
+  @include mq($from: tablet) {
+    &.non-js-only {
+      width: 33.3333%;
+    }
+  }
+}

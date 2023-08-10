@@ -1,0 +1,51 @@
+﻿@using DigitalLearningSolutions.Web.Controllers.TrackingSystem.CourseSetup
+@using DigitalLearningSolutions.Web.ViewModels.TrackingSystem.CourseSetup.CourseContent
+@model EditCourseSectionViewModel
+
+<link rel="stylesheet" href="@Url.Content("~/css/trackingSystem/courseContent.css")" asp-append-version="true">
+
+@{
+  ViewData["Title"] = "Edit section content";
+  var cancelRouteData = new Dictionary<string, string> { { "customisationId", Model.CustomisationId.ToString() } };
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-xl">@ViewData["Title"]</h1>
+
+    <div class="nhsuk-card word-break">
+      <div class="nhsuk-card__content basic-card-content">
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row basic-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Course
+            </dt>
+            <partial name="_SummaryFieldValue" model="@Model.CourseName" />
+          </div>
+          <div class="nhsuk-summary-list__row basic-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Section
+            </dt>
+            <partial name="_SummaryFieldValue" model="@Model.SectionName" />
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <form class="nhsuk-u-margin-bottom-3" method="post" asp-action="EditSection">
+
+      <partial name="_EditSectionContentFormInputs" model="Model" />
+
+      <button name="action" class="nhsuk-button" type="submit" value="@CourseContentController.SaveAction">Save</button>
+
+    </form>
+
+    <vc:cancel-link asp-controller="CourseContent" asp-action="Index" asp-all-route-data="@cancelRouteData" />
+
+  </div>
+</div>
+
+@section scripts {
+  <script src="@Url.Content("~/js/trackingSystem/editCourseContent.js")" asp-append-version="true"></script>
+}

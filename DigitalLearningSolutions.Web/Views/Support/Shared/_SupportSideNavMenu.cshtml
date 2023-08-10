@@ -1,0 +1,51 @@
+﻿@using DigitalLearningSolutions.Web.Helpers
+@using DigitalLearningSolutions.Web.Models.Enums
+@using DigitalLearningSolutions.Web.ViewModels.Support
+@model ISupportViewModel
+
+@{
+  var routeData = new Dictionary<string, string?> { { "dlsSubApplication", Model.DlsSubApplication.UrlSegment } };
+}
+
+<h2 class="side-nav__heading">Support</h2>
+<ul class="nhsuk-list side-nav__list">
+  <vc:side-menu-link asp-action="Index"
+                     asp-controller="Support"
+                     asp-all-route-data="@routeData"
+                     link-text="Support"
+                     is-current-page="@(Model.CurrentPage == SupportPage.Support)" />
+
+  <vc:side-menu-link asp-action="Index"
+                     asp-controller="Faqs"
+                     asp-all-route-data="@routeData"
+                     link-text="FAQs"
+                     is-current-page="@(Model.CurrentPage == SupportPage.Faqs)" />
+
+  <vc:side-menu-link asp-action="Index"
+                     asp-controller="Resources"
+                     asp-all-route-data="@routeData"
+                     link-text="Resources"
+                     is-current-page="@(Model.CurrentPage == SupportPage.Resources)" />
+
+  <vc:side-menu-link asp-action="Index"
+                     asp-controller="SupportTickets"
+                     asp-all-route-data="@routeData"
+                     link-text="Support tickets"
+                     is-current-page="@(Model.CurrentPage == SupportPage.SupportTickets)" />
+
+  @if (Model.CurrentPage == SupportPage.ChangeRequests)
+  {
+    <li class="side-nav__item side-nav__item--selected" aria-current="page">
+      <span class="nhsuk-contents-list__current">Change requests</span>
+    </li>
+  }
+  else
+  {
+    <li class="side-nav__item">
+      <a class="side-nav__link" href="@SupportLinksHelper.GetChangeRequestsUrl" target="_blank" rel="noreferrer">
+        Change requests
+      </a>
+    </li>
+  }
+
+</ul>

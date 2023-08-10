@@ -1,0 +1,370 @@
+@use "nhsuk-frontend/packages/core/all" as *;
+
+$iframe-padding-bottom: nhsuk-spacing(8) * 2;
+
+@mixin word-break-ie-fix {
+  // IE11 hack
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    word-break: break-all;
+  }
+}
+
+ul > li > ul > li {
+  list-style-type: circle;
+}
+
+.list-heading {
+  @extend .nhsuk-u-font-weight-bold;
+
+  li {
+    @extend .nhsuk-u-font-weight-normal;
+  }
+}
+
+.js-enabled .non-js-only {
+  display: none;
+}
+
+.delete-button {
+  background-color: $nhsuk-error-color;
+  box-shadow: 0 4px 0 #6b140e;
+  margin-bottom: 16px !important;
+}
+
+.delete-button:hover {
+  background-color: #aa2016;
+}
+
+.delete-button:active {
+  background-color: #6b140e;
+}
+
+.js-only-block {
+  display: none;
+}
+
+.js-enabled .js-only-block {
+  display: block;
+}
+
+.js-only-inline {
+  display: none;
+}
+
+.js-enabled .js-only-inline {
+  display: inline;
+}
+
+.small-edit-button, a.small-edit-button {
+  margin-bottom: nhsuk-spacing(2);
+  margin-top: nhsuk-spacing(0);
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.nhsuk-button {
+  @include mq($until: tablet) {
+    margin-top: nhsuk-spacing(3);
+  }
+}
+
+input:invalid {
+  border: $nhsuk-border-width-form-element-error solid $nhsuk-error-color;
+}
+
+input[type=file] {
+  @include govuk-media-query($until: tablet) {
+    height: 36px;
+  }
+}
+
+input[type=file].nhsuk-input--error {
+  height: 44px;
+
+  @include govuk-media-query($until: tablet) {
+    height: 40px;
+  }
+}
+
+h1#page-heading {
+  margin-bottom: 16px;
+}
+
+.page-subheading {
+  margin-bottom: 16px;
+}
+
+#maincontentwrapper {
+  display: flex;
+}
+
+.nhsuk-main-wrapper {
+  flex: 1;
+}
+
+.responsive-iframe-wrapper {
+  height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 400px;
+
+  @include govuk-media-query($from: desktop) {
+    min-height: 550px;
+  }
+}
+
+.responsive-iframe-wrapper-padding {
+  padding-bottom: $iframe-padding-bottom;
+}
+
+.responsive-iframe-wrapper-extra-padding {
+  padding-bottom: $iframe-padding-bottom * 1.5;
+}
+
+.nhsuk-heading-xl.heading-margin-2 {
+  margin-bottom: nhsuk-spacing(2);
+}
+
+.responsive-iframe {
+  width: 100%;
+  height: 100%;
+
+  &.responsive-iframe-min-height {
+    min-height: 550px;
+  }
+}
+
+.bottom-margin-nhsuk-card {
+  @include nhsuk-responsive-margin(7, 'bottom');
+}
+
+.basic-card-content {
+  padding: 16px 32px;
+}
+
+.basic-summary-list__row:last-child {
+  border: none;
+  margin-bottom: 0;
+}
+
+.basic-summary-list__row:last-child .nhsuk-summary-list__key {
+  border: none;
+}
+
+.basic-summary-list__row:last-child .nhsuk-summary-list__value {
+  border: none;
+  margin-bottom: 0;
+}
+
+.nhsuk-summary-list__value {
+  @include govuk-media-query($until: tablet) {
+    word-break: break-word;
+    @include word-break-ie-fix;
+  }
+}
+
+.right-align-tag-column {
+  padding: 0;
+
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
+    padding-left: nhsuk-spacing(3);
+  }
+}
+
+.right-align-tag {
+  width: 100%;
+  max-width: 10em;
+  text-align: center;
+  margin-bottom: 0;
+
+  @include govuk-media-query($until: desktop) {
+    margin-top: nhsuk-spacing(2);
+  }
+}
+
+.left-button-mobile-margin-bottom {
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 0;
+  }
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details-list-with-button {
+  margin-bottom: 24px;
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.details-list-with-button__row:last-child {
+  margin-bottom: 0;
+}
+
+.nhsuk-details__text > .nhsuk-button {
+  margin-bottom: 0;
+}
+
+@mixin hidden-submit-ie-fix {
+  // IE11 hack
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    display: block;
+    position: absolute;
+    left: -100%;
+  }
+}
+
+.hidden-submit {
+  display: none;
+  @include hidden-submit-ie-fix;
+}
+
+.divider {
+  border-bottom: 1px solid $nhsuk-border-color;
+  margin-bottom: nhsuk-spacing(3);
+}
+
+.word-break {
+  word-break: break-word;
+  @include word-break-ie-fix;
+}
+
+.vertical-align-centre {
+  vertical-align: middle
+}
+
+.side-nav-menu {
+  @include govuk-media-query($until: desktop) {
+    display: none;
+  }
+}
+
+.side-nav-menu-bottom {
+  @include nhsuk-responsive-padding(0, "left");
+
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}
+
+.side-nav__heading {
+  @extend .nhsuk-u-font-weight-bold;
+  color: $color_nhsuk-grey-1;
+  @include nhsuk-responsive-margin(3, "bottom");
+  @include nhsuk-responsive-padding(1, "top");
+  @extend .nhsuk-u-font-size-19;
+
+  @include govuk-media-query($until: desktop) {
+    color: $nhsuk-text-color;
+  }
+}
+
+.side-nav__link {
+  text-decoration: none;
+
+  &:visited {
+    color: $nhsuk-link-color;
+  }
+
+  &:hover {
+    color: $nhsuk-link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+.side-nav__list {
+  @include nhsuk-responsive-margin(0, "bottom");
+}
+
+.side-nav__item {
+  @include nhsuk-responsive-padding(1, "bottom");
+  @include nhsuk-responsive-padding(1, "top");
+  @extend .nhsuk-u-font-size-16;
+}
+
+.side-nav__item--selected {
+  border-left: 4px solid $nhsuk-link-color;
+  @include nhsuk-responsive-padding(2, "left");
+  @extend .nhsuk-u-font-weight-bold;
+
+  @include govuk-media-query($from: desktop) {
+    margin-left: -12px;
+  }
+}
+
+.hee-secondary-nav--tabs {
+  ul {
+    display: table;
+    list-style-type: none;
+    border-bottom: 1px solid $color_nhsuk-grey-1;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+
+    li {
+      margin-bottom: 0;
+
+      a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+      }
+
+      &.active {
+        border-bottom: 3px solid $color_nhsuk-blue;
+        font-weight: bold;
+        background-color: white;
+      }
+
+      &:hover {
+        background-color: aliceblue;
+      }
+    }
+  }
+}
+
+.nhsuk-error-message.error-message--margin-bottom-1 {
+  margin-bottom: nhsuk-spacing(1);
+}
+
+.display-none {
+  display: none;
+}
+
+.button-as-link {
+  background: none;
+  border: none;
+  color: $nhsuk-link-color;
+  @extend .nhsuk-u-font-size-19;
+  text-decoration: underline;
+
+  &:hover {
+    color: $nhsuk-link-hover-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:focus {
+    @include nhsuk-focused-text;
+  }
+}
+
+.beta-card__content {
+  margin-right: 75px;
+}
+
+.beta-hub-arrow {
+  display: block;
+  margin-top: -8px;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+}
